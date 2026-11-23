@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chúc mừng sinh nhật Đỗ Vân 🎂</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#3b2a4a;--card:#ffffffd9;--btn:#ff6fa5;--btnink:#fff;--soft:#ffffffaa;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#f6e9ff;--card:#2a2038dd;--btn:#ff7fb0;--btnink:#2a1030;--soft:#ffffff22}}
+:root[data-theme="dark"]{--ink:#f6e9ff;--card:#2a2038dd;--btn:#ff7fb0;--btnink:#2a1030;--soft:#ffffff22}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;margin:0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{font-family:"Baloo 2","Segoe UI",system-ui,sans-serif;color:var(--ink);background:#ffd1e8;overflow:hidden;
+transition:background .6s;background:linear-gradient(160deg,var(--c1,#ffd1e8),var(--c2,#fff0f7));touch-action:pan-y}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--c1,#ffd1e8)}
+#app{height:100%;display:flex;flex-direction:column;padding:10px 14px 12px;max-width:520px;margin:0 auto}
+header{text-align:center;padding-top:4px}
+header h1{margin:0;font-size:clamp(18px,5.2vw,24px);font-weight:800;line-height:1.15}
+header small{display:block;font-size:13px;opacity:.8}
+.bar{height:6px;border-radius:9px;background:var(--soft);margin:8px 4px 0;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--btn);border-radius:9px;transition:width .4s}
+main{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;position:relative}
+.card{width:100%;max-height:100%;overflow:auto;background:var(--card);backdrop-filter:blur(6px);border-radius:30px;padding:18px 18px 20px;text-align:center;box-shadow:0 10px 30px #0002;animation:pop .45s cubic-bezier(.2,1.4,.4,1)}
+@keyframes pop{from{transform:scale(.85) translateY(20px);opacity:0}to{transform:none;opacity:1}}
+.who{font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;opacity:.75}
+.av{font-size:clamp(54px,18vw,86px);line-height:1.1;margin:6px 0;animation:bob 2s ease-in-out infinite;cursor:pointer;user-select:none}
+@keyframes bob{50%{transform:translateY(-8px) rotate(-3deg)}}
+.name{font-size:clamp(22px,6.6vw,30px);font-weight:800;margin:0 0 8px}
+.msg{background:var(--soft);border-radius:22px;padding:14px 16px;font-size:clamp(15px,4.4vw,18px);line-height:1.45;font-weight:500;text-align:left;position:relative}
+.msg::before{content:"";position:absolute;top:-9px;left:50%;margin-left:-9px;border:9px solid transparent;border-top:0;border-bottom-color:var(--soft)}
+.tip{font-size:12px;opacity:.65;margin-top:10px}
+nav{display:grid;grid-template-columns:56px 1fr 56px;gap:10px;align-items:center;padding-top:10px}
+button{font:inherit;border:0;cursor:pointer;color:var(--btnink);background:var(--btn);border-radius:20px;min-height:52px;font-weight:700;font-size:18px;box-shadow:0 4px 0 #0003;transition:transform .1s}
+button:active{transform:translateY(3px);box-shadow:0 1px 0 #0003}
+button:disabled{opacity:.4}
+.mid{display:flex;gap:8px}.mid button{flex:1;font-size:15px;padding:0 6px}
+.alt{background:var(--soft);color:var(--ink)}
+.cake{font-size:80px;position:relative;display:inline-block}
+.flame{position:absolute;left:50%;top:-6px;transform:translateX(-50%);font-size:34px;animation:fl .5s infinite alternate;transition:opacity .4s}
+@keyframes fl{to{transform:translateX(-50%) scale(1.15) rotate(6deg)}}
+.out .flame{opacity:0}
+.big{font-size:clamp(46px,16vw,70px);font-weight:800;color:var(--btn);line-height:1}
+.pic{width:min(60vw,230px);height:min(60vw,230px);object-fit:contain;background:#fff;border-radius:28px;border:5px solid #fff;box-shadow:0 6px 18px #0003;margin:6px auto;display:block;animation:bob 2s ease-in-out infinite}.pic.cut{background:none;border:0;box-shadow:none;border-radius:0;width:auto;max-width:80%;height:min(40vh,250px);object-fit:contain;filter:drop-shadow(0 6px 10px #0003)}
+.add{min-height:38px;font-size:14px;padding:0 14px;margin-top:10px;background:var(--soft);color:var(--ink)}
+canvas{position:fixed;inset:0;pointer-events:none;z-index:5}
+</style>
+</head>
+<body>
+<canvas id="cv"></canvas><input type="file" id="pf" accept="image/*" hidden>
+<div id="app">
+<header><h1>🎂 Chúc mừng sinh nhật Đỗ Vân 🎂</h1><small>23/11/2000 · hôm nay tròn 26 tuổi rồi nè 🎉</small>
+<div class="bar"><i id="pg"></i></div></header>
+<main><div class="card" id="card"></div></main>
+<nav><button id="pv" aria-label="Trước">◀</button>
+<div class="mid"><button class="alt" id="cf">🎉 Pháo giấy</button><button class="alt" id="ap">▶ Tự chạy</button></div>
+<button id="nx" aria-label="Sau">▶</button></nav>
+</div>
+<script>
+/* ============ HƯỚNG DẪN THÊM HÌNH (đọc kỹ nha) ============
+ 1) Bỏ file ảnh (png/jpg/webp) vào thư mục "hinh" nằm cạnh file index.html.
+ 2) Ở nhân vật bạn muốn, điền tên file vào a:'' ví dụ  a:'hinh/howl.png'
+    - Ảnh đã tách nền (png trong suốt): chỉ cần điền a:'hinh/ten.png'
+    - Ảnh còn nền (ảnh chụp, ảnh cảnh phim): thêm k:1 để hiện trong khung bo góc,
+      ví dụ  a:'hinh/meo.jpg', k:1,
+ 3) Không có ảnh thì cứ để a:'' , trang sẽ tự hiện emoji.
+ 4) Muốn thêm nhân vật mới: copy nguyên 1 khối {...}, dán thêm dấu phẩy phía sau, rồi sửa:
+    c = 2 màu nền, e = emoji dự phòng, n = tên, f = emoji bay, m = lời chúc.
+    (Khối cuối cùng e:'FINAL' là trang bánh kem, hãy để nó nằm cuối cùng.)
+ 5) Ảnh nên rộng/cao tối đa ~600px cho nhẹ. Tên file không dấu, không khoảng trắng.
+ Ngoài ra trên mỗi trang còn có nút "📷 Thêm hình" để chọn ảnh ngay từ điện thoại
+ (chỉ lưu trên máy đó, không dành cho người khác xem).
+=========================================================== */
+var S=[
+{a:'hinh/9.png', c:['#9fdcff','#e8f7ff'],e:'🤖🔔',n:'Doraemon',f:['🔔','🍡','✨'],m:'Vân ơi! Hôm nay Doraemon lấy từ túi thần kỳ ra “Chiếc bánh sinh nhật vạn năng”! Chúc Vân 26 tuổi mỗi ngày đều vui như được ăn bánh rán dorayaki, và mọi điều ước đều thành sự thật nha! 🥞'},
+{a:'hinh/bbb.png', c:['#ffe6a8','#fff7dc'],e:'👓🎀💪🦊',n:'Nobita · Xuka · Chaien · Xeko',f:['⭐','🎤','💛'],m:'Nobita: “Chúc Vân đừng ngủ nướng như tớ nha!” 😴 Xuka: “Chúc bạn xinh đẹp, học giỏi, khoẻ mạnh nè.” 🎀 Chaien: “Bạn của tôi ơi, sinh nhật tôi sẽ hát tặng bạn một bài!” 🎤 Xeko: “Quà của tớ chắc chắn là xịn nhất, nhưng chúc mừng sinh nhật nha!” 🦊'},
+{a:'hinh/11.png',c:['#ffb3b3','#ffeaea'],e:'🧒🍑🐕',n:'Shin-chan',f:['🍫','🍑','💥'],m:'Chị Vân ơi~ sinh nhật vui nha! Chúc chị ăn thật nhiều bánh, ít bị giục lấy chồng, và lúc nào cũng xinh như mấy chị đẹp mà Shin thích! Nhớ cho Shin xin miếng bánh nha, hô hô hô! 😝'},
+{a:'hinh/ddd.png',c:['#fff0f5','#ffe0ee'],e:'🐭🐱🐰',n:'Chiikawa · Hachiware · Usagi',f:['🌸','💗','🍓'],m:'Vân ơi, sinh nhật vui vẻ nha! 🥹 Chiikawa chúc Vân bé bé xinh xinh luôn được ôm ấm. Hachiware: “Cố lên, bạn làm được mà!” Usagi: “Yaha! Ya-ha! Ya-ha!” Chúc bạn được ăn món ngon thật nhiều! 🍰'},
+{a:'hinh/12.png',c:['#ffe0c2','#fff4e8'],e:'🐱🧶🐾',n:'Mèo con đáng yêu',f:['🐾','🐟','💖'],m:'Meo meo~ chúc mừng sinh nhật Vân nè! 🐱 Mèo con tặng cái dụi đầu, một tiếng rù rù thật êm, và lời chúc: mỗi ngày đều ấm áp như tắm nắng cạnh cửa sổ. Meo! 💕'},
+{a:'hinh//13.png', c:['#c9f0cf','#f0fff2'],e:'🕵️🗡️🥜🐶',n:'Anya',f:['🥜','💚','🥂'],m:'Loid: “Nhiệm vụ hôm nay là hạnh phúc, chúc cô Vân hoàn thành xuất sắc.” 🕵️ Yor: “Chúc cô luôn bình an, mạnh khoẻ nhé.” 🗡️ Anya: “Anya muốn ăn đậu phộng… à nhầm, chúc chị Vân sinh nhật vui, waku waku!” 🥜 Bond: “Gâu!” 🐶'},
+{a:'hinh/16.png', c:['#ffd9a0','#fff1d9'],e:'🏮🐉🧧',n:'Sen · Chihiro',f:['🏮','🍙','🌸'],m:'Chihiro: “Chúc Vân sinh nhật vui, luôn dũng cảm, và đừng bao giờ quên tên của mình nhé.” 🌸 Chúc chị bước qua mọi cánh cửa mới với đôi tay rộng mở và một trái tim ấm áp. 🍙'},
+{a:'hinh/14.png', c:['#bcd7ff','#eaf2ff'],e:'🏰🔥🧙',n:'Howl · Calcifer · Sophie',f:['🔥','⭐','💙'],m:'Howl: “Chúc mừng sinh nhật, Vân! Hôm nay lâu đài của tôi bay đến tận chỗ cô để tặng cô một ngày thật lộng lẫy.” 🏰 Calcifer: “Tôi sẽ nướng bánh cho cô, nhưng đừng bắt tôi ăn trứng nha!” 🔥'},
+{a:'hinh/15.png', c:['#bfe8b4','#effbe9'],e:'🌳🍃☂️',n:'Totoro',f:['🍃','🌰','☁️'],m:'Grừ… Grừừừ~ 🍃 (Totoro dịch: Chúc Vân sinh nhật thật nhiều niềm vui, mong cuộc sống của bạn luôn xanh mát và dịu dàng như một cánh rừng sau cơn mưa.) ☔'},
+{c:['#ffc2dd','#fff0f7'],e:'FINAL',n:'Gửi riêng Đỗ Vân',f:['🎈','🎂','🎁'],m:'Tất cả các bạn đều ở đây để chúc Vân tuổi 26 thật rực rỡ: nhiều sức khoẻ, nhiều tiền, nhiều tình yêu và nhiều tiếng cười. Cảm ơn Vân vì đã tồn tại trên đời này! 💖 Giờ hãy ước một điều, rồi bấm thổi nến nha!'}
+];
+var i=0,card=document.getElementById('card'),cv=document.getElementById('cv'),cx=cv.getContext('2d'),P=[],auto=null;
+function rs(){cv.width=innerWidth;cv.height=innerHeight}rs();addEventListener('resize',rs);
+function burst(em,n,x,y){x=x==null?cv.width/2:x;y=y==null?cv.height*.4:y;
+for(var k=0;k<n;k++){P.push({x:x,y:y,vx:(Math.random()-.5)*12,vy:-Math.random()*12-3,r:Math.random()*6,t:em[k%em.length],s:18+Math.random()*16,l:120})}
+if(P.length===n)loop()}
+function loop(){cx.clearRect(0,0,cv.width,cv.height);
+P=P.filter(function(p){p.vy+=.35;p.x+=p.vx;p.y+=p.vy;p.r+=.1;p.l--;return p.l>0&&p.y<cv.height+40});
+P.forEach(function(p){cx.save();cx.globalAlpha=Math.min(1,p.l/40);cx.translate(p.x,p.y);cx.rotate(p.r);cx.font=p.s+'px serif';cx.fillText(p.t,0,0);cx.restore()});
+if(P.length)requestAnimationFrame(loop)}
+function render(dir){
+var s=S[i],d=document.documentElement.style;d.setProperty('--c1',s.c[0]);d.setProperty('--c2',s.c[1]);
+var h='<div class="who">Lời chúc '+(i+1)+' / '+S.length+'</div>';
+if(s.e==='FINAL'){h+='<div class="cake" id="ck">🎂<span class="flame">🔥</span></div><div class="big">26</div><div class="name">Happy Birthday Vân!</div>'}
+else{var im=gi(i);h+=(im?'<img class="pic'+(IMGS[i]&&!FR[i]?' cut':'')+'" id="av" data-e="'+s.e+'" onerror="var d=document.createElement(\'div\');d.className=\'av\';d.textContent=this.dataset.e;this.replaceWith(d)" src="'+im+'" alt="'+s.n+'">':'<div class="av" id="av">'+s.e+'</div>')+'<h2 class="name">'+s.n+'</h2>'}
+h+='<div class="msg">'+s.m+'</div>';
+if(s.e==='FINAL')h+='<button id="bl" style="margin-top:14px;width:100%">🌬️ Thổi nến &amp; ước điều ước</button>';
+card.style.animation='none';card.offsetWidth;card.style.animation='';card.innerHTML=h;
+document.getElementById('pg').style.width=((i+1)/S.length*100)+'%';
+document.getElementById('pv').disabled=i===0;document.getElementById('nx').disabled=i===S.length-1;
+var av=document.getElementById('av');if(av)av.onclick=function(e){burst(s.f,18,e.clientX,e.clientY)};
+var ad=document.getElementById('ad');if(ad)ad.onclick=function(){document.getElementById('pf').click()};
+var bl=document.getElementById('bl');if(bl)bl.onclick=function(){document.getElementById('ck').classList.add('out');bl.textContent='🎉 Điều ước của Vân sẽ thành sự thật!';burst(['🎉','🎊','💖','🎂','🎈','⭐'],70)};
+burst(s.f,14,cv.width/2,cv.height*.35)}
+function go(n){if(n<0||n>=S.length)return;i=n;render()}
+function stop(){if(auto){clearInterval(auto);auto=null;document.getElementById('ap').textContent='▶ Tự chạy'}}
+document.getElementById('pv').onclick=function(){stop();go(i-1)};
+document.getElementById('nx').onclick=function(){stop();go(i+1)};
+document.getElementById('cf').onclick=function(){burst(['🎉','🎊','🎈','💖','⭐','🌸','🎂'],60)};
+document.getElementById('ap').onclick=function(){if(auto){stop();return}
+document.getElementById('ap').textContent='⏸ Dừng';auto=setInterval(function(){if(i>=S.length-1){stop();return}go(i+1)},5000)};
+var IMGS={};var FR={};S.forEach(function(s,k){if(s.a)IMGS[k]=s.a;if(s.k)FR[k]=1});
+function gi(k){try{return localStorage.getItem('pic'+k)||IMGS[k]||''}catch(x){return IMGS[k]||''}}
+document.getElementById('pf').onchange=function(e){var f=e.target.files[0];if(!f)return;var r=new FileReader();r.onload=function(){var im=new Image();im.onload=function(){var c=document.createElement('canvas'),k=Math.min(1,480/Math.max(im.width,im.height));c.width=im.width*k;c.height=im.height*k;c.getContext('2d').drawImage(im,0,0,c.width,c.height);try{localStorage.setItem('pic'+i,c.toDataURL('image/jpeg',.82))}catch(x){}render()};im.src=r.result};r.readAsDataURL(f);e.target.value=''};
+var tx=0;addEventListener('touchstart',function(e){tx=e.touches[0].clientX},{passive:true});
+addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>60){stop();go(i+(dx<0?1:-1))}});
+addEventListener('keydown',function(e){if(e.key==='ArrowRight'){stop();go(i+1)}if(e.key==='ArrowLeft'){stop();go(i-1)}});
+render();setTimeout(function(){burst(['🎉','🎂','💖','🎈'],40)},400);
+</script>
+</body>
+</html>
